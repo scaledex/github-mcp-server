@@ -39,6 +39,8 @@ LABEL io.modelcontextprotocol.server.name="io.github.github/github-mcp-server"
 WORKDIR /server
 # Copy the binary from the build stage
 COPY --from=build /bin/github-mcp-server .
+# Enable all toolsets including projects by default
+ENV GITHUB_TOOLSETS="repos,issues,pull_requests,code_security,projects,actions,users,discussions,notifications,orgs"
 # Expose the default port
 EXPOSE 8082
 # Set the entrypoint to the server binary
